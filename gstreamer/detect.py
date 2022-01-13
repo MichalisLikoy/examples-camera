@@ -23,12 +23,12 @@ python3 detect.py --videosrc /dev/video1 --videofmt jpeg
 TEST_DATA=../all_models
 Run face detection model:
 python3 detect.py \
-  --model ${TEST_DATA}/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite
+  --model ${DEMO_FILES}/efficientdet-lite-sammy_edgetpu.tflite
 
 Run coco model:
 python3 detect.py \
-  --model ${TEST_DATA}/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite \
-  --labels ${TEST_DATA}/coco_labels.txt
+  --model ${DEMO_FILES}/efficientdet-lite-sammy_edgetpu.tflite\
+--labels ${DEMO_FILES}/sailboat-labels.txt
 """
 import argparse
 import gstreamer
@@ -69,8 +69,8 @@ def generate_svg(src_size, inference_box, objs, labels, text_lines):
 
 def main():
     default_model_dir = '../all_models'
-    default_model = 'mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite'
-    default_labels = 'coco_labels.txt'
+    default_model = 'efficientdet-lite-sammy_edgetpu.tflite'
+    default_labels = 'sailboat-labels.txt'
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', help='.tflite model path',
                         default=os.path.join(default_model_dir,default_model))
